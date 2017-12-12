@@ -11,12 +11,22 @@ exports.config =
     core: '/core4'
     path: '/solr'
 
+  # if the source uses http basic authorisation, specify it here
+  fromBasicAuth:
+    username: 'foo'
+    password: 'pass'
+
   # copy destination
   to:
     host: '127.0.0.1',
     port: '8080',
     core: '/core5',
     path: '/solr'
+
+  # if the destination uses http basic authorisation, specify it here
+  toBasicAuth:
+    username: 'bar'
+    password: 'pass'
 
   # this query will be executed against the "from" documents to select to documents to move
   query:'*:*'

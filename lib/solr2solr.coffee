@@ -6,7 +6,11 @@ class SolrToSolr
 
   go: (@config) ->
     @sourceClient = solr.createClient(@config.from)
+    if @config.fromBasicAuth
+      @sourceClient.basicAuth(@config.fromBasicAuth.username, @config.fromBasicAuth.password)
     @destClient   = solr.createClient(@config.to)
+    if @config.toBasicAuth
+      @destClient.basicAuth(@config.toBasicAuth.username, @config.toBasicAuth.password)
     @nextBatch(@config.start)
 
   nextBatch: (start) ->
